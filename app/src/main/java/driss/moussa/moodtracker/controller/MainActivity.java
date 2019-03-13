@@ -1,35 +1,29 @@
 package driss.moussa.moodtracker.controller;
 
 
-import android.os.Vibrator;
-import android.support.annotation.ColorInt;
-import android.support.constraint.ConstraintLayout;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.Touch;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import driss.moussa.moodtracker.R;
 import driss.moussa.moodtracker.component.DialogComment;
 import driss.moussa.moodtracker.component.SwipeGestureDetector;
-
 import android.media.MediaPlayer;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
+
+
 
     MediaPlayer mediaPlayer;
     int counter = 0;
     View view;
     private SwipeGestureDetector gestureDetector;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +35,25 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView addnote_clic = (ImageView) findViewById(R.id.addnote_clic);
         ImageView history_clic = (ImageView) findViewById(R.id.history_clic);
-
         addnote_clic.setImageResource(R.drawable.ic_note_add_black);
         history_clic.setImageResource(R.drawable.ic_history_black);
+        TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
+
+
 
 
 
         view = this.getWindow().getDecorView();
         view.setBackgroundResource(R.color.banana_yellow);
 
-        final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_LONG);
+        final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_SHORT);
 
         ImageView imagePic;
         imagePic = findViewById(R.id.imageView);
         imagePic.setImageResource(R.drawable.smiley_super_happy);
+
+
+
 
         addnote_clic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +70,6 @@ public class MainActivity extends AppCompatActivity {
         dialogComment.show(getSupportFragmentManager(),"dialog comment");
     }
 
-        // Partie qui me pose problème
-
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//        return gestureDetector.onTouchEvent(event);
-//    }
 
     @Override
     public boolean onTouchEvent (MotionEvent event) {
@@ -106,11 +98,11 @@ public class MainActivity extends AppCompatActivity {
         // ARRAY OF SONGS LIST
 
         int[] arraySongs = new int[] {
-                R.raw.sol_piano,
-                R.raw.fa_piano,
-                R.raw.mi_piano,
-                R.raw.re_piano,
                 R.raw.do_piano,
+                R.raw.re_piano,
+                R.raw.mi_piano,
+                R.raw.fa_piano,
+                R.raw.sol_piano,
         };
 
         // ARRAY OF BACKGROUND COLORS LIST
@@ -125,7 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
         String message = "";
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.bloop);
+        // mediaPlayer = [counter] = Arraysongs piano sounds
+
+        mediaPlayer = MediaPlayer.create(this, arraySongs[counter]);
 
 
 
