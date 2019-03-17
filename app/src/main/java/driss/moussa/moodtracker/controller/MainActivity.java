@@ -2,10 +2,17 @@ package driss.moussa.moodtracker.controller;
 
 
 
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,22 +20,40 @@ import android.widget.Toast;
 import driss.moussa.moodtracker.R;
 import driss.moussa.moodtracker.component.DialogComment;
 import driss.moussa.moodtracker.component.SwipeGestureDetector;
+import driss.moussa.moodtracker.model.Mood;
+
 import android.media.MediaPlayer;
 
 
 public class MainActivity extends AppCompatActivity  {
 
-
+        public static final String ALL_COMMENT ="THE USER COMMENTS";
 
     MediaPlayer mediaPlayer;
     int counter = 0;
     View view;
+    View decorView;
     private SwipeGestureDetector gestureDetector;
+    Mood mood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        getActionBar().hide();
+
+//        SharedPreferences saved = getSharedPreferences(ALL_COMMENT, MODE_PRIVATE);
+
+        mood = new Mood(counter, "");
+
+
+
+        view = this.getWindow().getDecorView();
 
         gestureDetector = new SwipeGestureDetector(this);
 
@@ -40,10 +65,6 @@ public class MainActivity extends AppCompatActivity  {
         TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
 
 
-
-
-
-        view = this.getWindow().getDecorView();
         view.setBackgroundResource(R.color.banana_yellow);
 
         final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_SHORT);
@@ -54,21 +75,23 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-
         addnote_clic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
+                Dialog();
                 toast.show();
             }
         });
     }
 
 
-    public void openDialog() {
-        DialogComment dialogComment = new DialogComment();
-        dialogComment.show(getSupportFragmentManager(),"dialog comment");
-    }
+
+
+
+//    public void openDialog() {
+//        DialogComment dialogComment = new DialogComment();
+//        dialogComment.show(getSupportFragmentManager(),"dialog comment");
+//    }
 
 
     @Override
@@ -79,10 +102,12 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-
     public void onSwipe(SwipeGestureDetector.SwipeDirection direction) {
 
         ImageView imagePic = (ImageView) findViewById(R.id.imageView);
+
+
+
 
 
         // ARRAY OF SMILEYS LIST
@@ -162,5 +187,38 @@ public class MainActivity extends AppCompatActivity  {
                 break;
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void Dialog () {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.layout_dialog, null);
+
+        final EditText inputEditText = (EditText) view.findViewById(R.id.editText);
+
+
+        builder.setView(view)
+                .setTitle("Commentaire")
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String recupCommentaire = inputEditText.getText().toString();
+
+                        mood.setUserComment(recupCommentaire);
+
+                        Toast.makeText(getBaseContext(),recupCommentaire,Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+        builder.show();
     }
 }

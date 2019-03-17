@@ -16,6 +16,7 @@ import driss.moussa.moodtracker.controller.MainActivity;
 
 public class SwipeGestureDetector extends GestureDetector {
 
+
     private final static int DELTA_WIN = 50;
 
     public SwipeGestureDetector(final MainActivity context) {

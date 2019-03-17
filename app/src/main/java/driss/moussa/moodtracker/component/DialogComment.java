@@ -3,6 +3,7 @@ package driss.moussa.moodtracker.component;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
@@ -11,9 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.concurrent.ExecutionException;
-
 import driss.moussa.moodtracker.R;
 
 /**
@@ -22,10 +20,7 @@ import driss.moussa.moodtracker.R;
 
 public class DialogComment extends AppCompatDialogFragment {
 
-
-
-    String recupCommentaire;
-
+    String recupCommentaire = "text";
 
 
 
@@ -53,7 +48,10 @@ public class DialogComment extends AppCompatDialogFragment {
 
                         recupCommentaire = inputEditText.getText().toString();
 
+
+
                         Toast.makeText(getContext(), recupCommentaire,Toast.LENGTH_SHORT).show();
+
                     }
 
                 });
@@ -63,4 +61,5 @@ public class DialogComment extends AppCompatDialogFragment {
 
 
     }
+
 }
