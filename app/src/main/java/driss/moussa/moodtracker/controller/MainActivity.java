@@ -42,33 +42,30 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // SHOW ACTIVITY_MAIN.XML AND FULLSCREEN WHEN APP LAUNCHED
+
         setContentView(R.layout.activity_main);
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        // DECLARE LIST
+
         Date date = new Date();
-
         mood = new Mood(counter, "");
-
         view = this.getWindow().getDecorView();
-
         gestureDetector = new SwipeGestureDetector(this);
-
         mPreferences = getPreferences(MODE_PRIVATE);
-
         ImageView addnote_clic = (ImageView) findViewById(R.id.addnote_clic);
         ImageView history_clic = (ImageView) findViewById(R.id.history_clic);
         addnote_clic.setImageResource(R.drawable.ic_note_add_black);
         history_clic.setImageResource(R.drawable.ic_history_black);
         TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
-
-//        final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_SHORT);
-
         ImageView imagePic;
         imagePic = findViewById(R.id.imageView);
         imagePic.setImageResource(R.drawable.smiley_happy);
         view.setBackgroundResource(R.color.light_sage);
 
+        // OPEN DIALOG WHEN COMMENT ICON IS CLICKED
 
         addnote_clic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +74,8 @@ public class MainActivity extends AppCompatActivity  {
 //                toast.show();
             }
         });
+
+        // OPENING WHEN HISTORY ICON IS CLICKED
 
         history_clic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-
+        // RETURN SWIPES TO SWIPEGESTUREDETECTOR
 
     @Override
     public boolean onTouchEvent (MotionEvent event) {
@@ -138,11 +137,11 @@ public class MainActivity extends AppCompatActivity  {
 
 //        String message = "";
 
-
+        // MEDIAPLAYER READY TO PLAY ArraySongs [counter]
 
         mediaPlayer = MediaPlayer.create(this, arraySongs[counter]);
 
-
+        // ACTIONS BEHIND SWIPES
 
         switch (direction) {
 
@@ -190,6 +189,8 @@ public class MainActivity extends AppCompatActivity  {
         }
 //        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    // OPEN DIALOG COMMENT REQUEST
 
     private void Dialog () {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
