@@ -9,16 +9,13 @@
         android:roundIcon="@mipmap/smiley_super_happy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.HistoryActivity" android:screenOrientation="portrait">
-
-
-        </activity>
-        <activity android:name=".controller.MainActivity" android:screenOrientation="portrait">
-
+        <activity
+            android:name=".controller.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

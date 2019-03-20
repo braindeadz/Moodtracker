@@ -24,17 +24,19 @@ import driss.moussa.moodtracker.model.Mood;
 
 import android.media.MediaPlayer;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity  {
 
-        public static final String ALL_COMMENT ="THE USER COMMENTS";
-
-    MediaPlayer mediaPlayer;
-    int counter = 0;
-    View view;
-    View decorView;
+    private MediaPlayer mediaPlayer;
+    private int counter = 1;
+    private View view;
+    private View decorView;
     private SwipeGestureDetector gestureDetector;
-    Mood mood;
+    private Mood mood;
+    private SharedPreferences mPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +46,15 @@ public class MainActivity extends AppCompatActivity  {
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-//        getActionBar().hide();
-
-//        SharedPreferences saved = getSharedPreferences(ALL_COMMENT, MODE_PRIVATE);
+        Date date = new Date();
 
         mood = new Mood(counter, "");
-
-
 
         view = this.getWindow().getDecorView();
 
         gestureDetector = new SwipeGestureDetector(this);
 
+        mPreferences = getPreferences(MODE_PRIVATE);
 
         ImageView addnote_clic = (ImageView) findViewById(R.id.addnote_clic);
         ImageView history_clic = (ImageView) findViewById(R.id.history_clic);
@@ -64,34 +62,32 @@ public class MainActivity extends AppCompatActivity  {
         history_clic.setImageResource(R.drawable.ic_history_black);
         TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
 
-
-        view.setBackgroundResource(R.color.banana_yellow);
-
-        final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_SHORT);
+//        final Toast toast = Toast.makeText(this, "Test du clic", Toast.LENGTH_SHORT);
 
         ImageView imagePic;
         imagePic = findViewById(R.id.imageView);
-        imagePic.setImageResource(R.drawable.smiley_super_happy);
-
+        imagePic.setImageResource(R.drawable.smiley_happy);
+        view.setBackgroundResource(R.color.light_sage);
 
 
         addnote_clic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog();
-                toast.show();
+//                toast.show();
             }
         });
+
+        history_clic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                setContentView(R.layout.activity_history);
+            }
+        });
+
     }
 
-
-
-
-
-//    public void openDialog() {
-//        DialogComment dialogComment = new DialogComment();
-//        dialogComment.show(getSupportFragmentManager(),"dialog comment");
-//    }
 
 
     @Override
@@ -140,9 +136,9 @@ public class MainActivity extends AppCompatActivity  {
                 R.color.faded_red,
         };
 
-        String message = "";
+//        String message = "";
 
-        // mediaPlayer = [counter] = Arraysongs piano sounds
+
 
         mediaPlayer = MediaPlayer.create(this, arraySongs[counter]);
 
@@ -152,41 +148,47 @@ public class MainActivity extends AppCompatActivity  {
 
 
             case BOTTOM_TO_TOP:
+
+                mood.setSelectedMood(counter);
+
                 if (counter > 0) {
                     counter--;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-                    message = String.valueOf(counter);
+//                    message = String.valueOf(counter);
 
                 } else {
                     counter = 4;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-                    message = String.valueOf(counter);
+//                    message = String.valueOf(counter);
                 }
                 break;
 
 
             case TOP_TO_BOTTOM:
+
+                mood.setSelectedMood(counter);
+
                 if (counter < 4) {
                     counter++;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-                    message = String.valueOf(counter);
+//                    message = String.valueOf(counter);
 
                 } else {
                     counter = 0;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-                    message = String.valueOf(counter);
+//                    message = String.valueOf(counter);
                 }
                 break;
         }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void Dialog () {
@@ -209,12 +211,12 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        String recupCommentaire = inputEditText.getText().toString();
+                        String inputComment = inputEditText.getText().toString();
 
-                        mood.setUserComment(recupCommentaire);
+                        mood.setUserComment(inputComment);
+                        mood.setSelectedMood(counter);
 
-                        Toast.makeText(getBaseContext(),recupCommentaire,Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getBaseContext(),inputComment,Toast.LENGTH_SHORT).show();
                     }
 
                 });
