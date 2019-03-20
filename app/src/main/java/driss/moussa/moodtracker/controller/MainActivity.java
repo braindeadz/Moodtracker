@@ -24,7 +24,11 @@ import driss.moussa.moodtracker.model.Mood;
 
 import android.media.MediaPlayer;
 
+import com.google.gson.Gson;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -38,6 +42,42 @@ public class MainActivity extends AppCompatActivity  {
     private Mood mood;
     private SharedPreferences mPreferences;
 
+    // DATE DECLARATION
+
+    Calendar calendar = Calendar.getInstance();
+    final String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+    // ARRAY OF SMILEYS LIST
+
+    int[] arraySmileys = new int[]{
+            R.drawable.smiley_super_happy,
+            R.drawable.smiley_happy,
+            R.drawable.smiley_normal,
+            R.drawable.smiley_disappointed,
+            R.drawable.smiley_sad,
+    };
+
+    // ARRAY OF SONGS LIST
+
+    int[] arraySongs = new int[] {
+            R.raw.do_piano,
+            R.raw.re_piano,
+            R.raw.mi_piano,
+            R.raw.fa_piano,
+            R.raw.sol_piano,
+    };
+
+    // ARRAY OF BACKGROUND COLORS LIST
+
+    int[] arrayBackgroundColors = new int[] {
+            R.color.banana_yellow,
+            R.color.light_sage,
+            R.color.cornflower_blue_65,
+            R.color.warm_grey,
+            R.color.faded_red,
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +90,7 @@ public class MainActivity extends AppCompatActivity  {
 
         // DECLARE LIST
 
-        Date date = new Date();
+
         mood = new Mood(counter, "");
         view = this.getWindow().getDecorView();
         gestureDetector = new SwipeGestureDetector(this);
@@ -62,8 +102,32 @@ public class MainActivity extends AppCompatActivity  {
         TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
         ImageView imagePic;
         imagePic = findViewById(R.id.imageView);
-        imagePic.setImageResource(R.drawable.smiley_happy);
-        view.setBackgroundResource(R.color.light_sage);
+
+        // Catch old mood at start
+
+        Gson gson = new Gson();
+        String json = mPreferences.getString(currentDate, "");
+        Mood obj = gson.fromJson(json, Mood.class);
+
+        if (json.isEmpty()) {
+
+            view.setBackgroundResource(R.color.light_sage);
+            imagePic.setImageResource(R.drawable.smiley_happy);
+
+        } else {
+            int oldMood = obj.getSelectedMood();
+            view.setBackgroundResource(arrayBackgroundColors[oldMood]);
+            imagePic.setImageResource(arraySmileys[oldMood]);
+        }
+
+
+
+//        Gson gson = new Gson();
+//        String json = mPreferences.getString("MyObject", "");
+//        Mood previousMood = gson.fromJson(json, Mood.class);
+
+
+
 
         // OPEN DIALOG WHEN COMMENT ICON IS CLICKED
 
@@ -72,6 +136,7 @@ public class MainActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 Dialog();
 //                toast.show();
+
             }
         });
 
@@ -102,38 +167,6 @@ public class MainActivity extends AppCompatActivity  {
         ImageView imagePic = (ImageView) findViewById(R.id.imageView);
 
 
-
-
-
-        // ARRAY OF SMILEYS LIST
-
-        int[] arraySmileys = new int[]{
-                R.drawable.smiley_super_happy,
-                R.drawable.smiley_happy,
-                R.drawable.smiley_normal,
-                R.drawable.smiley_disappointed,
-                R.drawable.smiley_sad,
-        };
-
-        // ARRAY OF SONGS LIST
-
-        int[] arraySongs = new int[] {
-                R.raw.do_piano,
-                R.raw.re_piano,
-                R.raw.mi_piano,
-                R.raw.fa_piano,
-                R.raw.sol_piano,
-        };
-
-        // ARRAY OF BACKGROUND COLORS LIST
-
-        int[] arrayBackgroundColors = new int[] {
-                R.color.banana_yellow,
-                R.color.light_sage,
-                R.color.cornflower_blue_65,
-                R.color.warm_grey,
-                R.color.faded_red,
-        };
 
 //        String message = "";
 
@@ -199,6 +232,17 @@ public class MainActivity extends AppCompatActivity  {
 
         final EditText inputEditText = (EditText) view.findViewById(R.id.editText);
 
+        Gson gson = new Gson();
+        String json = mPreferences.getString(currentDate, "");
+        Mood obj = gson.fromJson(json, Mood.class);
+
+
+        if (json.isEmpty()) {
+
+        } else {
+            String oldComment = obj.getUserComment();
+            inputEditText.setText(oldComment);
+        }
 
         builder.setView(view)
                 .setTitle("Commentaire")
@@ -218,6 +262,13 @@ public class MainActivity extends AppCompatActivity  {
                         mood.setSelectedMood(counter);
 
                         Toast.makeText(getBaseContext(),inputComment,Toast.LENGTH_SHORT).show();
+
+                        SharedPreferences.Editor prefsEditor = mPreferences.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(mood);
+                        prefsEditor.putString(currentDate , json);
+                        prefsEditor.commit();
+
                     }
 
                 });
