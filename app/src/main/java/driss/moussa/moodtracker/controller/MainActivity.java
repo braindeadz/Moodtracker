@@ -3,22 +3,19 @@ package driss.moussa.moodtracker.controller;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import driss.moussa.moodtracker.R;
-import driss.moussa.moodtracker.component.DialogComment;
 import driss.moussa.moodtracker.component.SwipeGestureDetector;
 import driss.moussa.moodtracker.model.Mood;
 
@@ -27,9 +24,7 @@ import android.media.MediaPlayer;
 import com.google.gson.Gson;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -42,10 +37,13 @@ public class MainActivity extends AppCompatActivity  {
     private Mood mood;
     private SharedPreferences mPreferences;
 
+
     // DATE DECLARATION
+
 
     Calendar calendar = Calendar.getInstance();
     final String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
 
     // ARRAY OF SMILEYS LIST
 
@@ -78,9 +76,13 @@ public class MainActivity extends AppCompatActivity  {
     };
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
 
         // SHOW ACTIVITY_MAIN.XML AND FULLSCREEN WHEN APP LAUNCHED
 
@@ -99,9 +101,10 @@ public class MainActivity extends AppCompatActivity  {
         ImageView history_clic = (ImageView) findViewById(R.id.history_clic);
         addnote_clic.setImageResource(R.drawable.ic_note_add_black);
         history_clic.setImageResource(R.drawable.ic_history_black);
-        TextView tv = (TextView) findViewById(R.id.fsdfsfsfsdf);
         ImageView imagePic;
         imagePic = findViewById(R.id.imageView);
+
+
 
         // Catch old mood at start
 
@@ -145,8 +148,7 @@ public class MainActivity extends AppCompatActivity  {
         history_clic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                setContentView(R.layout.activity_history);
+            History();
             }
         });
 
@@ -236,6 +238,9 @@ public class MainActivity extends AppCompatActivity  {
         String json = mPreferences.getString(currentDate, "");
         Mood obj = gson.fromJson(json, Mood.class);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.plop);
+        mediaPlayer.start();
+
 
         if (json.isEmpty()) {
 
@@ -256,12 +261,13 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.done1);
                         String inputComment = inputEditText.getText().toString();
 
                         mood.setUserComment(inputComment);
                         mood.setSelectedMood(counter);
 
-                        Toast.makeText(getBaseContext(),inputComment,Toast.LENGTH_SHORT).show();
+
 
                         SharedPreferences.Editor prefsEditor = mPreferences.edit();
                         Gson gson = new Gson();
@@ -269,10 +275,24 @@ public class MainActivity extends AppCompatActivity  {
                         prefsEditor.putString(currentDate , json);
                         prefsEditor.commit();
 
+                        mediaPlayer.start();
+
+
+                        Toast.makeText(getBaseContext(),"C'est enregistré !",Toast.LENGTH_SHORT).show();
                     }
 
                 });
 
         builder.show();
     }
+
+    private void History () {
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.page);
+        mediaPlayer.start();
+
+        Intent intent = new Intent(this, History.class);
+        startActivity(intent);
+    }
+
 }
