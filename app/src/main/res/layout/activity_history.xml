@@ -1,172 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.History"
     android:background="#DADADA"
-    >
+    android:orientation="vertical"
+    android:layout_gravity="right">
 
-    <TextView
-        android:id="@+id/past6"
-        android:layout_width="396dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+    <!--Il Y A 7 JOURS-->
 
-        android:background="#FFEB3B"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    <FrameLayout
+        android:id="@+id/past7"
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Il y a 7 jours"
+            android:textStyle="bold"/>
+    </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
 
-        android:text="  Il y a une semaine"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+        </FrameLayout>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/past5"
-        android:layout_width="218dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+    <!--Il Y A 6 JOURS-->
 
-        android:background="#3F51B5"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/past6"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Il y a 6 jours"
+                android:textStyle="bold"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-        android:text="  Il y a 6 jours"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+    </LinearLayout>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227" />
+    <!--Il Y A 5 JOURS-->
 
-    <TextView
-        android:id="@+id/past4"
-        android:layout_width="294dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/past5"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Il y a 5 jours"
+                android:textStyle="bold"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-        android:background="#8BC34A"
+    </LinearLayout>
 
-        android:text="  Il y a 5 jours"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+    <!--Il Y A 4 JOURS-->
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/past4"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Il y a 4 jours"
+                android:textStyle="bold"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-    <TextView
-        android:id="@+id/past3"
-        android:layout_width="397dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
 
-        android:background="#FFEB3B"
+    </LinearLayout>
 
-        android:text="  Il y a 4 jours"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+    <!--Il Y A 3 JOURS-->
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/past2"
-        android:layout_width="178dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        <FrameLayout
+            android:id="@+id/past3"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Il y a 3 jours"
+                android:textStyle="bold"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-        android:background="#96968A"
+    </LinearLayout>
 
-        android:text="  Il y a 3 jours"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+    <!--AVANT HIER-->
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/past2"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Avant-hier"
+                android:textStyle="bold"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-    <TextView
-        android:id="@+id/past1"
-        android:layout_width="97dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
 
-        android:background="#F44336"
+    </LinearLayout>
 
-        android:text="  Avant-hier"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+     <!--HIER-->
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
 
-    <TextView
-        android:id="@+id/today"
-        android:layout_width="297dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        <FrameLayout
+            android:id="@+id/past1"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
 
-        android:background="#8BC34A"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Hier"
+                android:textStyle="bold" />
 
-        android:text="  Humeur du jour"
-        android:textColor="#99000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+            <ImageView
+                android:id="@+id/iconPast1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent">
+        </FrameLayout>
+    </LinearLayout>
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.905" />
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

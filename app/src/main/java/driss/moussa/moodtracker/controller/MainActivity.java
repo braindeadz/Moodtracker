@@ -24,7 +24,9 @@ import android.media.MediaPlayer;
 import com.google.gson.Gson;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -44,10 +46,14 @@ public class MainActivity extends AppCompatActivity  {
     Calendar calendar = Calendar.getInstance();
     final String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
+//    Date date = new Date();
+//    Date dateHier = new Date(date.getTime()-86400000);
+
+
 
     // ARRAY OF SMILEYS LIST
 
-    int[] arraySmileys = new int[]{
+    public int[] arraySmileys = new int[]{
             R.drawable.smiley_super_happy,
             R.drawable.smiley_happy,
             R.drawable.smiley_normal,
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity  {
 
     // ARRAY OF SONGS LIST
 
-    int[] arraySongs = new int[] {
+    public int[] arraySongs = new int[] {
             R.raw.do_piano,
             R.raw.re_piano,
             R.raw.mi_piano,
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity  {
 
     // ARRAY OF BACKGROUND COLORS LIST
 
-    int[] arrayBackgroundColors = new int[] {
+    public int[] arrayBackgroundColors = new int[] {
             R.color.banana_yellow,
             R.color.light_sage,
             R.color.cornflower_blue_65,
@@ -82,6 +88,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
 
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+//        System.out.println(dateFormat.format(dateHier)); //2016/11/16 12:08:43
 
 
         // SHOW ACTIVITY_MAIN.XML AND FULLSCREEN WHEN APP LAUNCHED
@@ -261,7 +270,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.done1);
+                        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.scribble1);
                         String inputComment = inputEditText.getText().toString();
 
                         mood.setUserComment(inputComment);
@@ -292,7 +301,7 @@ public class MainActivity extends AppCompatActivity  {
         mediaPlayer.start();
 
         Intent intent = new Intent(this, History.class);
-        startActivity(intent);
-    }
+    startActivity(intent);
+}
 
 }
