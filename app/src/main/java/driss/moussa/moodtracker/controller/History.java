@@ -22,7 +22,7 @@ import driss.moussa.moodtracker.model.Mood;
 
 public class History extends AppCompatActivity {
 
-    SharedPreferences mPreferences;
+
 
     int[] arraySmileys = new int[]{
             R.drawable.smiley_super_happy,
@@ -55,6 +55,9 @@ public class History extends AppCompatActivity {
     ////////
     /////
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,29 +67,28 @@ public class History extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        mPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences mPreferences;
+        mPreferences = getSharedPreferences(getString(R.string.key_shared_preferences), MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mPreferences.getString(currentDate, "");
         Mood obj = gson.fromJson(json, Mood.class);
-
-
-
-        // Fait planter l'écran historique
-
-        int counter = 1;
-       // obj.getSelectedMood();
-
-        //////////////////////////////////////////
-
-
-        ImageView iconPast1 = (ImageView) findViewById(R.id.iconPast1);
-
-        iconPast1.setImageResource(R.drawable.ic_comment_black_48px);
-
-
-
         FrameLayout past1 = (FrameLayout)findViewById(R.id.past1);
-        past1.setBackgroundColor(getResources().getColor(arrayBackgroundColors[counter]));
+
+        if (obj != null) {
+            int oldMood = obj.getSelectedMood();
+            past1.setBackgroundResource(arrayBackgroundColors[oldMood]);
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

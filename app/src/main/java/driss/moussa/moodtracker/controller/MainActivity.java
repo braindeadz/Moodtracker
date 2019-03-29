@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity  {
         mood = new Mood(counter, "");
         view = this.getWindow().getDecorView();
         gestureDetector = new SwipeGestureDetector(this);
-        mPreferences = getPreferences(MODE_PRIVATE);
+        mPreferences = getSharedPreferences(getString(R.string.key_shared_preferences), MODE_PRIVATE);
         ImageView addnote_clic = (ImageView) findViewById(R.id.addnote_clic);
         ImageView history_clic = (ImageView) findViewById(R.id.history_clic);
         addnote_clic.setImageResource(R.drawable.ic_note_add_black);
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         builder.setView(view)
-                .setTitle("Commentaire")
+                .setTitle(R.string.comment)
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -279,6 +279,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
                         SharedPreferences.Editor prefsEditor = mPreferences.edit();
+
                         Gson gson = new Gson();
                         String json = gson.toJson(mood);
                         prefsEditor.putString(currentDate , json);
