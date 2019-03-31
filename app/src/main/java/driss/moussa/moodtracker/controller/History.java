@@ -3,6 +3,7 @@ package driss.moussa.moodtracker.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,9 @@ import java.util.Calendar;
 
 import driss.moussa.moodtracker.R;
 import driss.moussa.moodtracker.model.Mood;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifDrawableBuilder;
+import pl.droidsonroids.gif.GifImageView;
 
 public class History extends AppCompatActivity {
 
@@ -48,8 +52,9 @@ public class History extends AppCompatActivity {
     LinearLayout.LayoutParams w20 = new LinearLayout.LayoutParams(0, FrameLayout.LayoutParams.MATCH_PARENT, 20);
     LinearLayout.LayoutParams w0 = new LinearLayout.LayoutParams(0, FrameLayout.LayoutParams.MATCH_PARENT, 0);
 
+    public MediaPlayer mplayer = new MediaPlayer();
 
-    //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,16 @@ public class History extends AppCompatActivity {
 //        icon6.setVisibility(View.INVISIBLE);
 //        icon7.setVisibility(View.INVISIBLE);
 
+
+        mplayer = MediaPlayer.create(this, R.raw.catmaou);
+
+
+        FrameLayout framegif = (FrameLayout) findViewById(R.id.framegif);
+
+        findViewById(R.id.framegif).setVisibility(View.GONE);
+
+
+
         LinearLayout test1 = (LinearLayout) findViewById(R.id.test1);
 
         SharedPreferences mPreferences;
@@ -98,6 +113,8 @@ public class History extends AppCompatActivity {
         Gson gson = new Gson();
 
         String minCaract = "a";
+
+        int noHistory = 0;
 
 
         /////////////////
@@ -155,7 +172,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
 
@@ -214,7 +231,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
         //////////////////
@@ -271,7 +288,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
         //////////////////
@@ -328,7 +345,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
         //////////////////
@@ -385,7 +402,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
         //////////////////
@@ -442,7 +459,7 @@ public class History extends AppCompatActivity {
             }
 
         } else {
-
+            noHistory ++;
         }
 
         //////////////////
@@ -499,8 +516,26 @@ public class History extends AppCompatActivity {
             }
 
         } else {
+            noHistory ++;
+        }
+
+        if (noHistory == 7) {
+            findViewById(R.id.framegif).setVisibility(View.VISIBLE);
+            mplayer.setLooping(true);
+            mplayer.start();
+
+
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        mplayer.setLooping(false);
+        mplayer.stop();
+
+        super.onBackPressed();
     }
 }

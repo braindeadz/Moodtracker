@@ -9,6 +9,7 @@
     android:background="#DADADA"
     android:orientation="vertical">
 
+
     <!--Il Y A 7 JOURS-->
 
     <LinearLayout
@@ -254,6 +255,32 @@
             android:layout_height="match_parent">
         </FrameLayout>
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framegif"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/cornflower_blue_65">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pour le moment l'historique est vide !"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="250dp"
+            android:textSize="20dp"/>
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/historygif"
+            android:layout_width="415dp"
+            android:layout_height="415dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/cat" />
+
+    </FrameLayout>
+
+
 
 
 

@@ -46,11 +46,6 @@ public class MainActivity extends AppCompatActivity  {
     Calendar calendar = Calendar.getInstance();
     final String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
-//    Date date = new Date();
-//    Date dateHier = new Date(date.getTime()-86400000);
-
-
-
     // ARRAY OF SMILEYS LIST
 
     public int[] arraySmileys = new int[]{
@@ -81,17 +76,11 @@ public class MainActivity extends AppCompatActivity  {
             R.color.faded_red,
     };
 
-
+    /////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-//        System.out.println(dateFormat.format(dateHier)); //2016/11/16 12:08:43
-
 
         // SHOW ACTIVITY_MAIN.XML AND FULLSCREEN WHEN APP LAUNCHED
 
@@ -132,15 +121,6 @@ public class MainActivity extends AppCompatActivity  {
             imagePic.setImageResource(arraySmileys[oldMood]);
         }
 
-
-
-//        Gson gson = new Gson();
-//        String json = mPreferences.getString("MyObject", "");
-//        Mood previousMood = gson.fromJson(json, Mood.class);
-
-
-
-
         // OPEN DIALOG WHEN COMMENT ICON IS CLICKED
 
         addnote_clic.setOnClickListener(new View.OnClickListener() {
@@ -177,10 +157,6 @@ public class MainActivity extends AppCompatActivity  {
 
         ImageView imagePic = (ImageView) findViewById(R.id.imageView);
 
-
-
-//        String message = "";
-
         // MEDIAPLAYER READY TO PLAY ArraySongs [counter]
 
         mediaPlayer = MediaPlayer.create(this, arraySongs[counter]);
@@ -199,14 +175,12 @@ public class MainActivity extends AppCompatActivity  {
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-//                    message = String.valueOf(counter);
 
                 } else {
                     counter = 4;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-//                    message = String.valueOf(counter);
                 }
                 break;
 
@@ -220,18 +194,15 @@ public class MainActivity extends AppCompatActivity  {
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-//                    message = String.valueOf(counter);
 
                 } else {
                     counter = 0;
                     mediaPlayer.start();
                     imagePic.setImageResource(arraySmileys[counter]);
                     view.setBackgroundResource(arrayBackgroundColors[counter]);
-//                    message = String.valueOf(counter);
                 }
                 break;
         }
-//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     // OPEN DIALOG COMMENT REQUEST
@@ -275,8 +246,6 @@ public class MainActivity extends AppCompatActivity  {
 
                         mood.setUserComment(inputComment);
                         mood.setSelectedMood(counter);
-
-
 
                         SharedPreferences.Editor prefsEditor = mPreferences.edit();
 
