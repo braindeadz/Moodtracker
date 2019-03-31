@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
     <FrameLayout
-        android:id="@+id/past7"
+        android:id="@+id/past7_1"
         android:layout_width="0dp"
         android:layout_weight="50"
         android:layout_height="match_parent">
@@ -25,8 +25,17 @@
             android:layout_height="wrap_content"
             android:text=" Il y a 7 jours"
             android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/icon7"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_comment_black_48px" />
     </FrameLayout>
         <FrameLayout
+            android:id="@+id/past7_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -42,7 +51,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <FrameLayout
-            android:id="@+id/past6"
+            android:id="@+id/past6_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -51,8 +60,17 @@
                 android:layout_height="wrap_content"
                 android:text=" Il y a 6 jours"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/icon6"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past6_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -67,7 +85,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <FrameLayout
-            android:id="@+id/past5"
+            android:id="@+id/past5_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -76,8 +94,17 @@
                 android:layout_height="wrap_content"
                 android:text=" Il y a 5 jours"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/icon5"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past5_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -92,7 +119,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <FrameLayout
-            android:id="@+id/past4"
+            android:id="@+id/past4_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -101,8 +128,17 @@
                 android:layout_height="wrap_content"
                 android:text=" Il y a 4 jours"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/icon4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past4_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -119,7 +155,7 @@
         android:layout_weight="1">
 
         <FrameLayout
-            android:id="@+id/past3"
+            android:id="@+id/past3_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -128,8 +164,17 @@
                 android:layout_height="wrap_content"
                 android:text=" Il y a 3 jours"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/icon3"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past3_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -144,7 +189,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <FrameLayout
-            android:id="@+id/past2"
+            android:id="@+id/past2_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -153,8 +198,17 @@
                 android:layout_height="wrap_content"
                 android:text=" Avant-hier"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past2_2"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -166,13 +220,14 @@
      <!--HIER-->
 
     <LinearLayout
+        android:id="@+id/test1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false">
 
         <FrameLayout
-            android:id="@+id/past1"
+            android:id="@+id/past1_1"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
@@ -184,14 +239,16 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/iconPast1"
-                android:src="@drawable/ic_comment_black_48px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
-                android:layout_marginEnd="16dp"/>
+                android:id="@+id/icon1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_comment_black_48px" />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/past1_2"
+            android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent">
