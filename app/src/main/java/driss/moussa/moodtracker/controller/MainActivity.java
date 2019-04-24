@@ -24,9 +24,7 @@ import android.media.MediaPlayer;
 import com.google.gson.Gson;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -48,6 +46,7 @@ public class MainActivity extends AppCompatActivity  {
 
     // ARRAY OF SMILEYS LIST
 
+
     public int[] arraySmileys = new int[]{
             R.drawable.smiley_super_happy,
             R.drawable.smiley_happy,
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity  {
             R.drawable.smiley_disappointed,
             R.drawable.smiley_sad,
     };
+
 
     // ARRAY OF SONGS LIST
 
@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity  {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // DECLARE LIST
-
 
         mood = new Mood(counter, "");
         view = this.getWindow().getDecorView();
@@ -153,6 +152,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+
     public void onSwipe(SwipeGestureDetector.SwipeDirection direction) {
 
         ImageView imagePic = (ImageView) findViewById(R.id.imageView);
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity  {
     private void Dialog () {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_dialog, null);
+        View view = inflater.inflate(R.layout.activity_dialog, null);
 
         final EditText inputEditText = (EditText) view.findViewById(R.id.editText);
 
